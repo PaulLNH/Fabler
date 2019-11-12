@@ -46,6 +46,24 @@ CREATE TABLE places
   place_exists BOOLEAN NOT NULL,
   
   FOREIGN KEY
-      (product_in_game, game_id)
+      (place_in_game, game_id)
       REFERENCES games (game_id)
+);
+
+CREATE TABLE characters
+(
+  character_id INT NOT NULL
+      AUTO_INCREMENT PRIMARY KEY,
+	character_name VARCHAR
+      (255) NOT NULL,
+	character_description TEXT,
+  character_location INT NOT NULL,
+  character_mother INT NOT NULL,
+  character_father INT NOT NULL,
+  character_gender VARCHAR (255) NOT NULL,
+  character_dead BOOLEAN NOT NULL,
+  
+  FOREIGN KEY
+      (character_location, place_id)
+      REFERENCES places (place_id)
 );
